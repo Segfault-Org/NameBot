@@ -166,7 +166,7 @@ int process_update(json_object *obj, json_object **returnValue)
 			case AUTH_SEND_UPDATE:
 				return PROCESS_SEND_UPDATE;
 			case AUTH_LOGIN_REQUIRED:
-				fprintf(stderr, "Login required. Use '%s login' to login.\n", config->selfPath);
+				fprintf(stderr, "Login required. Use '%s' without '-d' to login.\n", config->selfPath);
 				closeCalled = 1;
 				exitCode = 2;
 				*returnValue = td_func_close();
