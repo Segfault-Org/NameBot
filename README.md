@@ -21,7 +21,7 @@ make CFLAGS="-DAPI_ID=<Your API ID without quotes> -DAPI_HASH=<Your API Hash wit
 # For example
 make CFLAGS="-DAPI_ID=1 -DAPI_HASH=114514aaa -DVERSION=1"
 ```
-4. Install: `sudo make instal`
+4. Install: `sudo make install`
 
 ## Create a mod to generate name
 
