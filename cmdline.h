@@ -5,6 +5,9 @@ typedef struct cmdconfig
 	unsigned int continuousModeInterval;
 	char *dataDir;
 	char *namemodPath;
+	int apiId;
+	char *apiHash;
+	char *version;
 } CMDConfig;
 
 CMDConfig *parse_config(int argc, char **argv);

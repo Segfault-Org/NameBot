@@ -17,9 +17,9 @@ int handle_auth(const json_object *obj, json_object **returnValue, int no_prompt
 	{
 		json_object *reqRoot = json_object_new_object();
 		json_object *parametersObj = json_object_new_object();
-		json_object *pApiHash = json_object_new_string("API_HASH");
+		json_object *pApiHash = json_object_new_string(config->apiHash);
 		json_object_object_add(parametersObj, "api_hash", pApiHash);
-		json_object *pApiCode = json_object_new_int(API_ID);
+		json_object *pApiCode = json_object_new_int(config->apiId);
 		json_object_object_add(parametersObj, "api_id", pApiCode);
 		json_object *pVersion = json_object_new_string("VERSION");
 		json_object_object_add(parametersObj, "application_version", pVersion);

@@ -12,16 +12,8 @@ A Telegram user bot which updates your name automatically.
 
 ### Steps
 
-1. Obtain your API ID and API Hash from [my.telegram.org][https://my.telegram.org].
-2. Create a version name like.
-3. Make
-```shell
-make CFLAGS="-DAPI_ID=<Your API ID without quotes> -DAPI_HASH=<Your API Hash without quotes> -DVERSION=<Your Version without quotes>"
-
-# For example
-make CFLAGS="-DAPI_ID=1 -DAPI_HASH=114514aaa -DVERSION=1"
-```
-4. Install: `sudo make install`
+1. Make: `make`
+2. Install: `sudo make install`
 
 ## Create a mod to generate name
 
@@ -36,11 +28,17 @@ Just use the header `client/dynmodule_client.h` to create your mod. Make sure yo
 
 Then you are ready to compile your mod.
 
+## Telegram API Key
+
+Obtain API ID and API Hash at [my.telegram.org](https://my.telegram.org/).
+
 ## Usage
 
 After doing all the preparations, you are ready to run. General configuration:
 
 ```shell
+export API_ID=<Your API ID>
+export API_HASH=<Your API Hash>
 /path/to/namebot -p <data dir, will be created> \ # Can also be replaced by environment variable DATA_DIR
 				-n <path/to/mod.so> \ # Can also be replaced by environment variable NAME_MOD
 				-d \ # Daemon mode. Will return an error if the user had not logon. Optional.

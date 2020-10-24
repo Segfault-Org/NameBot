@@ -26,6 +26,33 @@ CMDConfig *_parse_config(int argc, char **argv, CMDConfig **conf)
 	config->continuousModeInterval = 0;
 	config->dataDir = getenv("DATA_DIR");
 	config->namemodPath = getenv("NAME_MOD");
+	char *endptr = NULL;
+    long val;
+	const char *rawApiId = getenv("API_ID");
+	if (rawApiId == NULL)
+	{
+		fprintf(stderr, "API_ID variable must be supplied.\n");
+		return NULL;
+	}
+	val = strtol(rawApiId, &endptr, 10);
+	if (endptr == rawApiId)
+	{
+		fprintf(stderr, "API_ID must be a number.\n");
+		return NULL;
+	}
+	if (val < INT_MIN || val > INT_MAX)
+	{
+		fprintf(stderr, "API_ID must be an integer.\n");
+		return NULL;
+	}
+	config->apiId = val;
+	const char *apiHash = getenv("API_HASH");
+	if (apiHash == NULL)
+	{
+		fprintf(stderr, "API_HASH variable must be supplied.\n");
+		return NULL;
+	}
+	config->apiHash = (char*)apiHash;
 	for (int i = 0; i < argc; i ++)
 	{
 #ifdef DEBUG
@@ -75,8 +102,7 @@ CMDConfig *_parse_config(int argc, char **argv, CMDConfig **conf)
 		{
 			if (i != (argc - 1))
 			{
-				char *endptr = NULL;
-    			long val;
+				endptr = NULL;
 				val = strtol(argv[++i], &endptr, 10);
 				if (endptr == argv[i])
 				{

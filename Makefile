@@ -1,7 +1,10 @@
 TARGET = namebot
 
+VERSION := 1
+VERSION := $(VERSION).$(shell git rev-list --count HEAD)
+
 OBJS = main.o auth.o utils.o cmdline.o dynmodule.o
-CFLAGS = -Wall -O0 -fno-omit-frame-pointer -g
+CFLAGS = -Wall -O0 -fno-omit-frame-pointer -g -DVERSION=$(VERSION)
 LDFLAGS = -ltdjson -ljson-c -ldl
 
 .PHONY: clean all
